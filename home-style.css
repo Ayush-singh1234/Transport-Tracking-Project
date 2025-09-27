@@ -1,0 +1,103 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+.top-header {
+    background-color: #1a2238;
+    color: #ccc;
+    padding: 8px 50px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+.contact-info span {
+    margin-right: 20px;
+}
+.main-nav {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.main-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.main-nav ul li a:hover, .main-nav ul li a.active {
+    color: #d9534f;
+}
+.live-map-link {
+    background-color: #d9534f;
+    color: white !important;
+    border-radius: 5px;
+}
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://as2.ftcdn.net/jpg/14/23/27/01/1000_F_1423270151_nKGyzpwLonNKkAkv24nkHgJaa4ciHCrL.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+.hero-content h2 {
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+.hero-content h1 {
+    font-size: 56px;
+    margin: 10px 0;
+    letter-spacing: 3px;
+}
+.hero-content p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 20px auto 30px;
+    line-height: 1.6;
+}
+.btn {
+    text-decoration: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s;
+    margin: 0 10px;
+}
+.btn-primary {
+    background-color: #d9534f;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #c9302c;
+}
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+.btn-secondary:hover {
+    background-color: white;
+    color: #333;
+}
