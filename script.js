@@ -1,45 +1,31 @@
-// HTML elements ko select karna
-const startBtn = document.getElementById('startBtn');
-const stopBtn = document.getElementById('stopBtn');
-const statusDiv = document.getElementById('status');
+// 1. Map ko initialize karo
+const map = L.map('map').setView([20.5937, 78.9629], 5);
 
-// Backend server se connect karna 
-const socket = io("http://localhost:3000");
+// 2. Map ki tile layer add karo
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 
-let watchId = null;
-
-
-startBtn.addEventListener('click', () => {
-  if (!navigator.geolocation) {
-    return alert('Sorry, Geolocation is not supported by your browser.');
-  }
-
-  
-  watchId = navigator.geolocation.watchPosition((position) => {
-    const { latitude, longitude } = position.coords;
-    
-    // Server ko location bhejna
-    socket.emit('send-location', { latitude, longitude });
-    
-
-    console.log(`Bhej raha hoon: ${latitude}, ${longitude}`);
-  });
-
-  
-  statusDiv.textContent = 'Status: Sharing Location...';
-  startBtn.classList.add('hidden');
-  stopBtn.classList.remove('hidden');
+// 3. Ek bus ka icon banao
+const busIcon = L.icon({
+    iconUrl: 'https://i.imgur.com/gCdC1G4.png', // Bus icon ka link
+    iconSize: [35, 35],
 });
 
+// 4. Marker ko shuru mein map par daalo (abhi location nahi pata)
+const marker = L.marker([0, 0], { icon: busIcon }).addTo(map);
 
-stopBtn.addEventListener('click', () => {
-  if (watchId) {
-    navigator.geolocation.clearWatch(watchId);
-    watchId = null;
-  }
-  
-  
-  statusDiv.textContent = 'Status: Not Sharing';
-  stopBtn.classList.add('hidden');
-  startBtn.classList.remove('hidden');
+// 5. Backend server se connect karo
+const socket = io("http://localhost:3000");
+
+// 6. Jaise hi 'receive-location' message aaye...
+socket.on('receive-location', (data) => {
+    const { latitude, longitude } = data;
+    console.log(`Mili: ${latitude}, ${longitude}`);
+    
+    // Marker ki position update karo
+    marker.setLatLng([latitude, longitude]);
+    
+    // Map ko marker par center kar do
+    map.setView([latitude, longitude], 16);
 });

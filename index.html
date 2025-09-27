@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Driver App</title>
+    <title>Live Transport Tracker</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
+
 <body>
-    <div class="container">
-        <h1>Smart Ride - Driver Panel</h1>
-        <p>Your ID: <strong>BUS-123</strong></p>
-        
-        <button id="startBtn">Start Sharing Location</button>
-        <button id="stopBtn" class="hidden">Stop Sharing Location</button>
-
-        <div id="status">
-            Status: Not Sharing
-        </div>
-    </div>
-
-    
-    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <header>
+        <h1>Live Bus Tracking</h1>
+    </header>
+    <main>
+        <div id="map"></div>
+    </main>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
